@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { CopilotKit } from "@copilotkit/react-core"; 
+import "@copilotkit/react-ui/styles.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +36,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <CopilotKit 
+          publicApiKey={process.env.COPILOT_CLOUD_PUBLIC_API_KEY}
+          // runtimeUrl="/api/copilotkit"
+          > 
           {children}
+        </CopilotKit>
         </ThemeProvider>
       </body>
     </html>
